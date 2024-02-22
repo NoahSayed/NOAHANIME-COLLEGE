@@ -2,7 +2,9 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+/**
+  import "../imgslider.css";
+*/
 const ImgSlider = (props) => {
   let settings = {
     dots: true,
@@ -15,31 +17,63 @@ const ImgSlider = (props) => {
   return (
     <Carousel {...settings}>
       <Wrap>
-        <a>
-          <img src="/images/slider-badging.jpg" alt="" />
-        </a>
+          <img src="/images/slider-one.jpg" alt="" />
+          <video
+          controls
+          playsInline={true}
+          muted
+          autoPlay = {true}
+          src="/videos/onepiece.mp4"
+          loop ={true}
+        >
+        </video>
+        
       </Wrap>
 
       <Wrap>
-        <a>
-          <img src="/images/slider-scale.jpg" alt="" />
-        </a>
+       <Iimg src="/images/slider-two-women.jpg"></Iimg>
+        <video
+        controls
+          playsInline={true}
+          muted
+          autoPlay = {true}
+          src="/videos/amelia.mp4"
+          loop ={true}
+        >
+        </video>
+
+
+        
       </Wrap>
 
       <Wrap>
-        <a>
-          <img src="/images/slider-badag.jpg" alt="" />
-        </a>
-      </Wrap>
-
-      <Wrap>
-        <a>
-          <img src="/images/slider-scales.jpg" alt="" />
-        </a>
+        
+          <img src="/images/akatsuki.jpg" alt="" />
+          <video
+          
+          playsInline={true}
+          muted
+          autoPlay = {true}
+          src="/videos/akatsuki.mp4"
+          loop ={true}
+        >
+        </video>
       </Wrap>
     </Carousel>
   );
 };
+/**
+  const mystyle = {
+   opacity: "0" ,
+      height: "25rem",
+      width: "100%",
+       
+    
+  };
+*/
+
+
+
 
 const Carousel = styled(Slider)`
   margin-top: 20px;
@@ -79,32 +113,55 @@ const Carousel = styled(Slider)`
     right: -75px;
   }
 `;
-
+const Iimg = styled.img`
+    width: 100%;
+    z-index : 1;
+    opacity : 1;
+    `;
 const Wrap = styled.div`
   border-radius: 4px;
   cursor: pointer;
   position: relative;
-
-  a {
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-      rgb(0 0 0 / 73%) 0px 16px 10px -10px;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    padding: 4px;
+  display:block;
+ 
+ 
+  
 
     img {
       width: 100%;
-      height: 100%;
+      z-index : 1;
+      opacity : 1;
     }
+    
+      
+    video{
+  position : absolute ;
+  top : 0px;
+  opacity: 0 ;
+  height: 25rem;
+  width: 100%;
+  @media (max-width:768px){
+    height : 100px;
+  }
+
+}
 
     &:hover {
-      padding: 0;
+      padding: 0, 0, 0, 10px;
       border: 4px solid rgba(249, 249, 249, 0.8);
       transition-duration: 300ms;
-    }
+    
+  video{
+    opacity :1;
   }
+/**
+  img{
+    opacity : 0;
+  }
+*/
+
+    }
+  
 `;
 
 export default ImgSlider;
