@@ -10,10 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import db from "../firebase";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
+import Chatbot from './Chatbot';
 
 const Home = (props) => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
+
   let recommends = [];
   let newDisneys = [];
   let originals = [];
@@ -56,6 +58,7 @@ const Home = (props) => {
 
   return (
     <Container>
+      <Chatbot /> {/* Positioned as absolute for overlay */}
       <ImgSlider />
       <Viewers />
       <Recommends />

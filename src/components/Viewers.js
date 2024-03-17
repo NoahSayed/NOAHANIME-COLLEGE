@@ -4,7 +4,7 @@ const Viewers = (props) => {
   return (
     <Container>
       <Wrap>
-        <video controls autoPlay={true} muted loop={true} playsInline={true}>
+        <video controls  loop={true}  autoPlay={true} >
           <source src="/videos/blackclover.mp4" type="video/mp4" />
         </video>
         <h1 className="Title">BlackCLoVer</h1>

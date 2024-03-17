@@ -9,7 +9,7 @@ const Login = (props) => {
         <CTA>
         <Text> NoaHAnimE</Text>
 
-          <SignUp href="/Home.js  " >Dont Want to Sign Up</SignUp>
+          <SignUp href="/Home  " >Dont Want to Sign Up</SignUp>
           
          
           <Description>
@@ -65,7 +65,7 @@ const BgImage = styled.div`
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("https://wallpaperaccess.com/full/435.jpg");
+  background-image: url("https://i.pinimg.com/736x/9a/6a/16/9a6a167c9b0e258ef234c173e3d903b0.jpg");
   position: absolute;
   top: 0;
   right: 0;
