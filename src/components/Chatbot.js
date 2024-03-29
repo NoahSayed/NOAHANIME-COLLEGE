@@ -22,50 +22,14 @@ const steps = [
   },
   {
     id: "Name",
-    message: "Hi {previousValue}, How can I help you today?",
+    message: "Hi {previousValue}, which anime can i help you with today?",
     trigger: "issues",
   },
-  {
-    id: "issues",
-    options: [
-      {
-        value: "React",
-        label: "React Development Issue",
-        trigger: "React",
-      },
-      { value: "Angular", label: "Angular Development Issue", trigger: "Angular" },
-      { value: "General Inquiry", label: "General Inquiry", trigger: "Inquiry" },
-    ],
-  },
-  {
-    id: "React",
-    message:
-      "Thanks for letting us know about your React issue. Our team will get in touch with you shortly to assist.",
-    end: true, // End of conversation
-  },
-  {
-    id: "Angular",
-    message:
-      "Thanks for letting us know about your Angular issue. Our team will get in touch with you shortly to assist.",
-    end: true,
-  },
-  {
-    id: "Inquiry",
-    message:
-      "Please tell us more about your inquiry and we'll do our best to help!",
-    trigger: "moreInfo",
-  },
-  {
-    id: "moreInfo",
-    user: true, // User input step for more details
-    trigger: "inquiryResponse",
-  },
-  {
-    id: "inquiryResponse",
-    message:
-      "Thank you for the additional information. We'll get back to you as soon as possible. In the meantime, you can explore our resources section for helpful articles!",
-    end: true,
-  },
+ {
+  id: "issues"
+  
+ }
+ 
 ];
 
 function Chatbot() {

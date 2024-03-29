@@ -58,7 +58,7 @@ const Home = (props) => {
 
   return (
     <Container>
-      <Chatbot /> {/* Positioned as absolute for overlay */}
+      <Chatbot /> 
       <ImgSlider />
       <Viewers />
       <Recommends />

@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
+import ScriptMerge from "./components/ScriptMerge";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/detail/:id">
             <Detail />
+          </Route>
+          <Route path="/merge">
+            <ScriptMerge />
           </Route>
         </Switch>
       </Router>
