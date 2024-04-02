@@ -81,6 +81,7 @@ DBPedia.defaultProps = {
 };
 
 const BlackChatbotContainer = styled.div`
+  background-color: black;
   /* Include styles from the original ChatbotContainer here */
   position: fixed;
   bottom: 0;
