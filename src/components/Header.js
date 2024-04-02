@@ -16,14 +16,14 @@ const Header = (props) => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        history.push("/home");
-      }
-    });
-  }, [userName]);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(async (user) => {
+  //     if (user) {
+  //       setUser(user);
+  //       history.push("/home");
+  //     }
+  //   });
+  // }, [userName]);
 
   const handleAuth = () => {
     if (!userName) {
@@ -81,15 +81,15 @@ const Header = (props) => {
             </a>
             <a>
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ORIGINALS</span>
+              <span>ANIME</span>
             </a>
             <a>
               <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
+              <span>REVIEWS</span>
             </a>
             <a>
               <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>SERIES</span>
+              <span>RATINGS</span>
             </a>
           </NavMenu>
           <SignOut>

@@ -4,13 +4,13 @@ const Viewers = (props) => {
   return (
     <Container>
       <Wrap>
-        <video controls  loop={true}  autoPlay={true} >
+      <video muted controls autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/blackclover.mp4" type="video/mp4" />
         </video>
         <h1 className="Title">BlackCLoVer</h1>
       </Wrap>
       <Wrap>
-        <video controls autoPlay={true} loop ={true} playsInline={true}>
+        <video muted controls autoPlay={true} loop ={true} playsInline={true}>
           <source src="/videos/suzume-trailer-crop.mp4" type="video/mp4" />
         </video>
         <h1 className="Anima"></h1>
