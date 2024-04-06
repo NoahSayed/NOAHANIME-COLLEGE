@@ -65,7 +65,7 @@ const BgImage = styled.div`
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("https://i.pinimg.com/736x/9a/6a/16/9a6a167c9b0e258ef234c173e3d903b0.jpg");
+  background-image: url(" https://blogger.googleusercontent.com/img/a/AVvXsEhoRQHzPoS5coajfpSgwt8GSCGIeArKNSMOX5I5XzVLGiHqQ4aMzWYWorGZAjM2EiSa_TmXHmBYod1mU55tImCJZwkIj16g6ZANaOXa7euoGcFSDbywxif1cdMWjfGg4TlONz6GYR-J2ZUbq8WD6mzwX-eCIuVT2NNcGK_PjDtA0zCtzdmQAvqLmOqMgci-=s16000-rw");
   position: absolute;
   top: 0;
   right: 0;

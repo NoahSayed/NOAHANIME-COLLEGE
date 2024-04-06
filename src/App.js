@@ -9,6 +9,7 @@ import ScriptMerge from "./components/ScriptMerge";
 function App() {
   return (
     <div className="App">
+
       <Router>
         <Header />
         <Switch>

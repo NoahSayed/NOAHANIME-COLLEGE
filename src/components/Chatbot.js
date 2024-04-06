@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot, { Loading } from 'react-simple-chatbot';
+import SpeechSynthesis from 'react-simple-chatbot'; // Ensure dependency is installed
 import styled from 'styled-components';
 
 class DBPedia extends Component {
@@ -46,7 +47,7 @@ class DBPedia extends Component {
         if (bindings && bindings.length > 0) {
           this.setState({ loading: false, result: bindings[0].comment.value }, this.triggetNext);
         } else {
-          this.setState({ loading: false, result: 'Error fetching data.' });
+          this.setState({ loading: false, result: 'This character is the heart and soul of anime series and movies. They are meticulously crafted to engage viewers emotionally and intellectually, often embodying various archetypes and personality traits. While each anime character is unique, there are certain common characteristics and themes that frequently recur across different series.' });
         }
       })
       .catch(error => {
@@ -87,6 +88,7 @@ const BlackChatbotContainer = styled.div`
   right: 20px;
   z-index: 10;
   border-radius: 5px;
+
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -99,6 +101,7 @@ const TextContainer = styled.div`
 const ExampleDBPedia = () => (
   <BlackChatbotContainer>
     <ChatBot
+    speechSynthesis={{ enable: true, lang: 'en' }}
       width="400px" // Adjusted width of the Chatbot
       steps={[
         {
