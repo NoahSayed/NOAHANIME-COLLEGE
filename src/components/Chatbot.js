@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot, { Loading } from 'react-simple-chatbot';
 import SpeechSynthesis from 'react-simple-chatbot'; // Ensure dependency is installed
 import styled from 'styled-components';
+
 
 class DBPedia extends Component {
   constructor(props) {

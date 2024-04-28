@@ -16,14 +16,14 @@ const Header = (props) => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        history.push("/home");
-      }
-    });
-  }, [userName]);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(async (user) => {
+  //     if (user) {
+  //       setUser(user);
+  //       history.push("/home");
+  //     }
+  //   });
+  // }, [userName]);
 
   const handleAuth = () => {
     if (!userName) {
@@ -79,9 +79,9 @@ const Header = (props) => {
               <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
               <span>WATCHLIST</span>
             </a>
-            <a>
+            <a href="/merge">
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ANIME</span>
+              <span>Story Generator</span>
             </a>
             <a>
               <img src="/images/movie-icon.svg" alt="MOVIES" />
