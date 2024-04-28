@@ -1,0 +1,10 @@
+{
+  version: 1,
+  mediaFileName: 'Suzume _ OFFICIAL TRAILER.mp4',
+  cutSegments: [
+    {
+      end: 32.131,
+      name: '',
+    },
+  ],
+}

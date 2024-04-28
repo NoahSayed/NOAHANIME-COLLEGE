@@ -1,0 +1,10 @@
+{
+  version: 1,
+  mediaFileName: 'final-trailer.mp4',
+  cutSegments: [
+    {
+      end: 25.019007073404257,
+      name: '',
+    },
+  ],
+}

@@ -1,0 +1,27 @@
+.script-merge {
+    /* Existing styles for the main container (optional) */
+  }
+  
+  .script-boxes {
+    display: flex;
+    width: 100%; /* Ensures boxes fill available width */
+  }
+  
+  .script-box {
+    flex: 1; /* Makes boxes share available space equally */
+    width: 48%; /* Adjust as needed based on your reference image */
+    height: 200px; /* Adjust as needed based on your reference image */
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* New style for the combined story box */
+  .combined-story {
+    width: 100%; /* Makes it take full width of the parent */
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
