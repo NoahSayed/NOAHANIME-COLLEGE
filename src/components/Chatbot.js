@@ -40,7 +40,6 @@ class DBPedia extends Component {
     `);
 
     const queryUrl = `${endpoint}?query=${query}&format=json`;
-
     fetch(queryUrl)
       .then(response => response.json())
       .then(data => {
@@ -65,9 +64,9 @@ class DBPedia extends Component {
     const { loading, result } = this.state;
 
     return (
-        <TextContainer>
-          <p>{loading ? <Loading /> : result}</p>
-        </TextContainer>
+      <TextContainer>
+        <p>{loading ? <Loading /> : result}</p>
+      </TextContainer>
     );
   }
 }
@@ -83,62 +82,119 @@ DBPedia.defaultProps = {
 };
 
 const BlackChatbotContainer = styled.div`
-  /* Include styles from the original ChatbotContainer here */
   position: fixed;
   bottom: 0;
   right: 20px;
   z-index: 10;
   border-radius: 5px;
+  display: flex;  
+  flex-direction: column; 
 
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 20;
 `;
+const CloseButton = styled.button`
+  
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red; 
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 50%; 
+  cursor: pointer;
+  z-index: 21;
+`;
+
 
 const TextContainer = styled.div`
   color: black;
 `;
 
-const ExampleDBPedia = () => (
-  <BlackChatbotContainer>
-    <ChatBot
-    speechSynthesis={{ enable: true, lang: 'en' }}
-      width="400px" // Adjusted width of the Chatbot
-      steps={[
-        {
-          id: '1',
-          message: 'What is your name?',
-          trigger: '2',
-        },
-        {
-          id: '2',
-          user: true,
-          trigger: '3',
-        },
-        {
-          id: '3',
-          message: 'Hi {previousValue}, nice to meet you!',
-          trigger: '4',
-        },
-        {
-          id: '4',
-          message: 'Ask me Something about Anime',
-          trigger: 'search',
-        },
-        {
-          id: 'search',
-          user: true,
-          trigger: '5',
-        },
-        {
-          id: '5',
-          component: <DBPedia />,
-          waitAction: true,
-          trigger: '4',
-        },
-      ]}
-    />
-  </BlackChatbotContainer>
-);
+const ExampleDBPedia = () => {
+  const [showChat, setShowChat] = useState(false); 
 
+  const handleButtonClick = () => {
+    setShowChat(!showChat); 
+  };
+  const handleCloseChat = () => {
+    setShowChat(false); 
+  };
+
+  return (
+    <div>
+
+      {showChat && (
+        <BlackChatbotContainer>
+          <CloseButton onClick={handleCloseChat}>X</CloseButton>
+
+          <ChatBot
+            speechSynthesis={{ enable: true, lang: 'en' }}
+            width="400px" 
+
+            steps={[
+              {
+                id: '1',
+                message: 'What is your name?',
+                trigger: '2',
+              },
+              {
+                id: '2',
+                user: true,
+                trigger: '3',
+              },
+              {
+                id: '3',
+                message: 'Hi {previousValue}, nice to meet you!',
+                trigger: '4',
+              },
+              {
+                id: '4',
+                message: 'Ask me Something about Anime',
+                trigger: 'search',
+              },
+              {
+                id: 'search',
+                user: true,
+                trigger: '5',
+              },
+              {
+                id: '5',
+                component: <DBPedia />,
+                waitAction: true,
+                trigger: '4',
+              },
+
+            ]}
+          />
+        </BlackChatbotContainer>
+      )}
+      <StyledButton onClick={handleButtonClick} >
+
+      </StyledButton>
+    </div>
+  );
+};
+
+const StyledButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: black; 
+  color: white;
+  padding: 45px 45px;
+  border: none;
+  border-radius: 50%; 
+  cursor: pointer;
+  z-index: 20;
+  display: showChat ? 'none' : 'block';
+  
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZTkcGX0Mm48hbZtbyP6hD5iiGzqHK8yY9g&s"); 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  background-size: cover; 
+`;
 export default ExampleDBPedia;
