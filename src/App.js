@@ -5,7 +5,11 @@ import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
 import ScriptMerge from "./components/ScriptMerge";
+
+import Ratings from "./components/Ratings";
+
 import generateStory from "./components/storygenerator2";
+
 function App() {
   return (
     <div className="App">
@@ -25,9 +29,17 @@ function App() {
           <Route path="/merge">
             <ScriptMerge />
           </Route>
+
+          <Route path="/Ratings">
+            <Ratings/>
+          </Route>
+
+
+
           <Route path="/story">
             <generateStory/>
           </Route>
+
         </Switch>
       </Router>
     </div>
