@@ -7,6 +7,7 @@ import Detail from "./components/Detail";
 import ScriptMerge from "./components/ScriptMerge";
 
 import Ratings from "./components/Ratings";
+import LoginNotice from "./components/LoginNotice";
 
 import generateStory from "./components/storygenerator2";
 
@@ -32,6 +33,10 @@ function App() {
 
           <Route path="/Ratings">
             <Ratings/>
+          </Route>
+
+          <Route path="/LoginNotice">
+            <LoginNotice/>
           </Route>
 
 

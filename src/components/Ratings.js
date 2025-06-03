@@ -29,71 +29,35 @@ function Ratings() {
   return (
     <Container>
       <h4>Trending </h4>
-      <Content>
-        <Wrap>
-          <Link to="https://one-piece.com/">
-            <img
-              src="https://i0.wp.com/oyster.ignimgs.com/wordpress/stg.ign.com/2021/02/jujutsu-kaisen.jpg?w=1000&ssl=1"
-              alt="jojoba"
-            ></img>
-          </Link>
-          <Detailsinside2 type="text" alt="notext">
-            One Piece (stylized in all caps) is a Japanese manga series written
-            and illustrated by Eiichiro Oda. It has been serialized in
-            Shueisha's shōnen manga magazine Weekly Shōnen Jump since July 1997,
-            with its individual chapters compiled into 104 tankōbon volumes as
-            of November 2022.
-          </Detailsinside2>
-        </Wrap>
-        <Wrap>
-          <Link to="">
-            <img
-              className="deathnote"
-              src=" https://qph.cf2.quoracdn.net/main-qimg-83a1cd5dcdd8e647d8ae25417334424e-lq "
-              alt="jojoba"
-            ></img>
-            <Detailsinside2 type="text" alt="notext">
-              Demon Slayer: Kimetsu no Yaiba (鬼滅の刃, Kimetsu no Yaiba, "Blade
-              of Demon Destruction"[4]) is a Japanese manga series written and
-              illustrated by Koyoharu Gotouge. It follows teenage Tanjiro
-              Kamado, who strives to become a demon slayer after his family was
-              slaughtered and his younger sister, Nezuko, turned into a demon.
-            </Detailsinside2>
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="https://jujutsu-kaisen.fandom.com/wiki/Jujutsu_Kaisen">
-            <img
-              src="https://m.media-amazon.com/images/I/81rEhhwbubL.jpg"
-              alt="jojoba"
-            ></img>
-          </Link>
-          <Detailsinside2 type="text" alt="notext">
-            Jujutsu Kaisen (呪術廻戦) is a Japanese manga series written and
-            illustrated by Gege Akutami. It has been serialized in Shueisha's
-            shōnen manga magazine Weekly Shōnen Jump since March 2018, with its
-            chapters collected and published in 21 tankōbon volumes as of
-            December 2022.
-          </Detailsinside2>
-        </Wrap>
-        <Wrap>
-          <Link to="https://hunterxhunter.fandom.com/wiki/Gon_Freecss">
-            <img
-              className="AOT"
-              src="https://wallpapercave.com/wp/wp6584169.jpg"
-              alt="jojoba"
-            ></img>
-          </Link>
-          <Detailsinside2 type="text" alt="notext">
-            Gon Freecss (ゴン゠フリークス, Gon Furīkusu) is a Rookie Hunter and
-            the son of Ging Freecss. Finding his father is Gon's motivation in
-            becoming a Hunter.
-          </Detailsinside2>
-        </Wrap>
-      </Content>
+     <Content>
+  {ratings.map((anime, index) => (
+    <Wrap key={index} className={index === 4 ? "break-row" : ""}>
+      <Link to="#">
+        <img src={anime.image} alt={anime.name} />
+      </Link>
+      <Detailsinside2 type="text" alt="notext">
+        {anime.name || 'Unknown Anime'} is a popular series.
+      </Detailsinside2>
+      <StarBox>
+        {'⭐'.repeat(Math.floor(anime.rating))} ({anime.rating})
+      </StarBox>
+    </Wrap>
+  ))}
+</Content>
     </Container>
   );
 };
+const StarBox = styled.div`
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  background: rgba(0,0,0,0.6);
+  color: gold;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 8px;
+  z-index: 2;
+`;
 const Detailsinside2 =  styled.text`
   opacity: 0;
   z-index: 1;
@@ -112,6 +76,9 @@ const Detailsinside2 =  styled.text`
 
   &:hover {
     opacity: 1;
+  }
+    &.break-row {
+    grid-column: 1 / -1; /* Forces this item to start on a new row */
   }
 `;
 const Container = styled.div`

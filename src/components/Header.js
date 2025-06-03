@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { auth, provider } from "../firebase";
+
+import { useLocation } from "react-router-dom";
+
 import {
   selectUserName,
   selectUserPhoto,
@@ -10,21 +13,31 @@ import {
   setSignOutState,
 } from "../features/user/userSlice";
 
+let counter = 0; 
+
+
+
 const Header = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      setUser(user);
+
+      // only redirect if you're on the login page "/"
+      if (location.pathname === "/") {
         history.push("/home");
       }
-    });
-  }, [userName]);
-
+    } else {
+      dispatch(setSignOutState());
+    }
+  });
+}, []);
   const handleAuth = () => {
     if (!userName) {
       auth
@@ -61,33 +74,7 @@ const Header = (props) => {
       <Logo>
         <img src="images/luffy.png" alt="Disney+" />
       </Logo>
-       <NavMenu>
-            <a href="/home">
-              <img src="/images/home-icon.svg" alt="HOME" />
-              <span>HOME</span>
-            </a>
-            <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a>
-            <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a href="/merge">
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>Story Generator</span>
-            </a>
-            <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>REVIEWS</span>
-            </a>
-            <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>RATINGS</span>
-            </a>
-          </NavMenu>
-
+      
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
       ) : (
