@@ -5,16 +5,16 @@ import { useSelector } from "react-redux";
 import { selectTrending } from "../features/movie/movieSlice";
 
 const animeList = [
-  { name: 'One Piece', image: 'https://upload.wikimedia.org/wikipedia/en/6/65/One_Piece_Anime.jpg' },
-  { name: 'Death Note', image: 'https://i.pinimg.com/474x/b0/2c/4b/b02c4b936dfa3b59bae26ffba85b3f3b.jpg' },
-  { name: 'Naruto', image: 'https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg' },
-  { name: 'Attack on Titan', image: 'https://i.pinimg.com/474x/39/08/f4/3908f4e468ccb9e809da7f37e3a38c65.jpg' },
+  { name: 'One Piece', image: 'https://wallpapers.com/images/hd/death-note-4k-jly5kevfdjn9ktg6.jpgs' },
+  { name: 'Death Note', image: 'https://i.pinimg.com/736x/24/1c/9c/241c9cb80f6ab43946bc14fc2dee76d0.jpg' },
+  { name: 'Naruto', image: 'https://www.slashfilm.com/img/gallery/the-10-best-episodes-of-the-monster-anime-ranked/l-intro-1725889569.jpg' },
+  { name: 'Attack on Titan', image: 'https://wallpapercat.com/w/full/2/6/f/24702-2560x1440-desktop-hd-jujutsu-kaisen-tv-series-wallpaper-photo.jpg' },
   { name: 'Demon Slayer', image: 'https://upload.wikimedia.org/wikipedia/en/d/d6/Shingeki_no_Kyojin_manga_volume_1.jpg' },
-  { },
-  { },
-  { },
-  { name: 'Jujutsu Kaisen', image: 'https://upload.wikimedia.org/wikipedia/en/e/e0/Jujutsu_kaisen.jpg' },
-  { name: 'Tokyo Ghoul', image: 'https://upload.wikimedia.org/wikipedia/en/7/76/Tokyo_Ghoul_volume_1_cover.jpg' }
+   { name: 'Jujutsu Kaisen', image: 'https://i.pinimg.com/736x/65/da/fb/65dafb49fed4ff91da4f32dfa8a6db7c.jpg' },
+  { name: 'Jujutsu Kaisen', image: 'https://i.pinimg.com/736x/03/6a/2e/036a2eced14dcd225d47ffcce492cb30.jpg' },
+
+  { name: 'Dragon Ball Z', image: 'https://wallpapers.com/images/featured/hd-anime-prr1y1k5gqxfcgpv.jpg' },
+  { name: 'Tokyo Ghoul', image: 'https://i.pinimg.com/736x/d6/61/18/d66118e9b5dee136ec1f77aa57d6adb2.jpg' }
 ];
 
 function getRandomRating() {

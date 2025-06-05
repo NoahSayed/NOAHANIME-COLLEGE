@@ -60,6 +60,7 @@ const Header = (props) => {
   };
 
   const setUser = (user) => {
+    
     dispatch(
       setUserLoginDetails({
         name: user.displayName,
@@ -84,23 +85,21 @@ const Header = (props) => {
               <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
             </a>
-            <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a>
+            
             <a>
               <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
               <span>WATCHLIST</span>
             </a>
             <a href="/merge">
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>Story Generator</span>
+              <span>AI Story Generator</span>
             </a>
             <a>
               <img src="/images/movie-icon.svg" alt="MOVIES" />
               <span>REVIEWS</span>
+              /
             </a>
-            <a>
+            <a href="/Ratings">
               <img src="/images/series-icon.svg" alt="SERIES" />
               <span>RATINGS</span>
             </a>
@@ -136,7 +135,7 @@ const Logo = styled.a`
   padding: 0;
   width: 80px;
   margin-top: 4px;
-  max-height: 70px;
+  c
   font-size: 0;
   display: inline-block;
 

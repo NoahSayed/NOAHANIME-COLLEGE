@@ -1,15 +1,39 @@
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setUserLoginDetails } from "../features/user/userSlice";
 
 
 const Login = (props) => {
+   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleAuth = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        dispatch(
+          setUserLoginDetails({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+          })
+        );
+        history.push("/home"); // redirect after login
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   return (
     <Container>
       <Content>
         <CTA>
         <Text> NoaHAnimE</Text>
 
-          <SignUp href="/Home  " >Dont Want to Sign Up</SignUp>
+          <SignUp onClick={handleAuth} >Please Login To Continue  </SignUp>
           
          
           <Description>
