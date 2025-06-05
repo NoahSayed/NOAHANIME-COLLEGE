@@ -16,8 +16,7 @@ import {
 let counter = 0; 
 
 
-
-const Header = (props) => {
+const Header = ({ onWatchlistClick, onChatbotClick }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -86,22 +85,25 @@ const Header = (props) => {
               <span>HOME</span>
             </a>
             
-            <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a href="/merge">
+          
+  <a onClick={onWatchlistClick}>
+    <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+    <span>Trailers (Home)</span>
+  </a>
+
+  <a onClick={onChatbotClick}>
+  <img src="/images/movie-icon.svg" alt="MOVIES" />
+  <span>Chatbot (Home)</span>
+</a>
+
+            <a href="/LoginNotice">
               <img src="/images/original-icon.svg" alt="ORIGINALS" />
               <span>AI Story Generator</span>
             </a>
-            <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>REVIEWS</span>
-              /
-            </a>
+            
             <a href="/Ratings">
               <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>RATINGS</span>
+              <span>Ratings</span>
             </a>
           </NavMenu>
           <SignOut>
@@ -205,9 +207,9 @@ const NavMenu = styled.div`
     }
   }
 
-  /* @media (max-width: 768px) {
+   @media (max-width: 768px) {
     display: none;
-  } */
+  } 
 `;
 
 const Login = styled.a`

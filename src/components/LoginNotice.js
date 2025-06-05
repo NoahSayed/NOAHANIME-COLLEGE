@@ -4,7 +4,7 @@ import styled from "styled-components";
 const LoginNotice = () => {
   return (
     <Wrapper>
-      <Message>Please login first to Unlock this Section</Message>
+      <Message> This feature requires administrative privileges</Message>
     </Wrapper>
   );
 };

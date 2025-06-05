@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectRecommend } from "../features/movie/movieSlice";
 
-const Recommends = (props) => {
+const Recommends = ({ refProp }) => {
   const movies = useSelector(selectRecommend);
   console.log(movies, ":🛢️");
 
   return (
-    <Container>
-      <h4>Recommended for You</h4>
+    <Container ref={refProp}>
+      <h4 id="recommended-section">Trailers</h4>
       <Content>
         {movies &&
           movies.map((movie, key) => (
@@ -36,10 +36,12 @@ const DetailsInside = styled.text`
 
   height: 100%;
   background-color: black;
-  @media (max-width : 768px){
-  font-size : 0.5rem;
-  padding-left : 20px
- }
+
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
+    padding-left: 20px;
+  }
+
   &:hover {
     opacity: 1;
   }
@@ -91,9 +93,11 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
   }
+
   .AOT {
     height: 280px;
   }
+
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
       rgb(0 0 0 / 72%) 0px 30px 22px -10px;
@@ -101,4 +105,5 @@ const Wrap = styled.div`
     border-color: rgba(249, 249, 249, 0.8);
   }
 `;
+
 export default Recommends;

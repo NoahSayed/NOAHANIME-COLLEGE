@@ -1,19 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot, { Loading } from 'react-simple-chatbot';
-import SpeechSynthesis from 'react-simple-chatbot'; // Ensure dependency is installed
 import styled from 'styled-components';
-
 
 class DBPedia extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      loading: true,
-      result: '',
-    };
-
+    this.state = { loading: true, result: '' };
     this.triggetNext = this.triggetNext.bind(this);
   }
 
@@ -38,8 +31,8 @@ class DBPedia extends Component {
         FILTER (lang(?comment) = 'en')
       } LIMIT 100
     `);
-
     const queryUrl = `${endpoint}?query=${query}&format=json`;
+
     fetch(queryUrl)
       .then(response => response.json())
       .then(data => {
@@ -47,7 +40,10 @@ class DBPedia extends Component {
         if (bindings && bindings.length > 0) {
           this.setState({ loading: false, result: bindings[0].comment.value }, this.triggetNext);
         } else {
-          this.setState({ loading: false, result: 'This character is the heart and soul of anime series and movies. They are meticulously crafted to engage viewers emotionally and intellectually, often embodying various archetypes and personality traits. While each anime character is unique, there are certain common characteristics and themes that frequently recur across different series.' });
+          this.setState({
+            loading: false,
+            result: 'This character is the heart and soul of anime series and movies. They are meticulously crafted to engage viewers emotionally and intellectually, often embodying various archetypes and personality traits.',
+          });
         }
       })
       .catch(error => {
@@ -62,7 +58,6 @@ class DBPedia extends Component {
 
   render() {
     const { loading, result } = this.state;
-
     return (
       <TextContainer>
         <p>{loading ? <Loading /> : result}</p>
@@ -76,65 +71,135 @@ DBPedia.propTypes = {
   triggerNextStep: PropTypes.func,
 };
 
-DBPedia.defaultProps = {
-  steps: undefined,
-  triggerNextStep: undefined,
-};
-
 const BlackChatbotContainer = styled.div`
   position: fixed;
   bottom: 0;
   right: 20px;
-  z-index: 10;
+  z-index: 1000;
   border-radius: 5px;
-  display: flex;  
-  flex-direction: column; 
-
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   margin-bottom: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  z-index: 20;
 `;
+
 const CloseButton = styled.button`
-  
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: red; 
+  background-color: red;
   color: white;
   padding: 5px;
   border: none;
-  border-radius: 50%; 
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 21;
+  z-index: 1001;
 `;
 
+const TextContainer = styled.div``;
 
-const TextContainer = styled.div`
-  color: black;
+const StyledButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: black;
+  color: white;
+  padding: 45px 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZTkcGX0Mm48hbZtbyP6hD5iiGzqHK8yY9g&s");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 
-const ExampleDBPedia = () => {
-  const [showChat, setShowChat] = useState(false); 
+const StyledChatBot = styled(ChatBot)`
+  && {
+    background-color: #0f0f0f;
+    color: white;
 
-  const handleButtonClick = () => {
-    setShowChat(!showChat); 
-  };
-  const handleCloseChat = () => {
-    setShowChat(false); 
-  };
+    .rsc-header {
+      background-color: #5e3a99;
+      color: white;
+    }
+
+    .rsc-ts-bubble {
+      background-color: #5e3a99;
+      color: white;
+    }
+
+    .rsc-os-option-element {
+      background-color: #1a1a1a;
+      color: white;
+    }
+
+    .rsc-input {
+      background-color: #1a1a1a;
+      color: white;
+      border: none;
+    }
+
+    .rsc-container {
+      background-color: #0f0f0f;
+    }
+
+    .rsc-content {
+      scrollbar-width: thin;
+      scrollbar-color: #555 #1a1a1a;
+    }
+
+    .rsc-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .rsc-content::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    .rsc-content::-webkit-scrollbar-thumb {
+      background-color: #555;
+      border-radius: 4px;
+    }
+
+    .rsc-content::-webkit-scrollbar-thumb:hover {
+      background: #888;
+    }
+
+    .rsc-footer {
+      background-color: #1a1a1a;
+    }
+
+    .rsc-ts-avatar {
+      background-color: transparent;
+    }
+  }
+`;
+
+const ExampleDBPedia = ({ openExternally }) => {
+  const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    if (openExternally) {
+      setShowChat(true);
+    }
+  }, [openExternally]);
+
+  const handleOpen = () => setShowChat(true);
+  const handleClose = () => setShowChat(false);
 
   return (
-    <div>
-
+    <>
+      {!openExternally && (
+        <StyledButton onClick={handleOpen} />
+      )}
       {showChat && (
         <BlackChatbotContainer>
-          <CloseButton onClick={handleCloseChat}>X</CloseButton>
-
-          <ChatBot
+          <CloseButton onClick={handleClose}>X</CloseButton>
+          <StyledChatBot
             speechSynthesis={{ enable: true, lang: 'en' }}
-            width="400px" 
-
+            width="400px"
             steps={[
               {
                 id: '1',
@@ -153,7 +218,7 @@ const ExampleDBPedia = () => {
               },
               {
                 id: '4',
-                message: 'Ask me Something about Anime',
+                message: 'Ask me something about anime.',
                 trigger: 'search',
               },
               {
@@ -167,34 +232,12 @@ const ExampleDBPedia = () => {
                 waitAction: true,
                 trigger: '4',
               },
-
             ]}
           />
         </BlackChatbotContainer>
       )}
-      <StyledButton onClick={handleButtonClick} >
-
-      </StyledButton>
-    </div>
+    </>
   );
 };
 
-const StyledButton = styled.button`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: black; 
-  color: white;
-  padding: 45px 45px;
-  border: none;
-  border-radius: 50%; 
-  cursor: pointer;
-  z-index: 20;
-  display: showChat ? 'none' : 'block';
-  
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZTkcGX0Mm48hbZtbyP6hD5iiGzqHK8yY9g&s"); 
-  background-repeat: no-repeat; 
-  background-position: center; 
-  background-size: cover; 
-`;
 export default ExampleDBPedia;

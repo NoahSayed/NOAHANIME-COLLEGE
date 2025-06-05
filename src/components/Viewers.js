@@ -7,11 +7,11 @@ const Viewers = (props) => {
       <video muted controls autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/blackclover.mp4" type="video/mp4" />
         </video>
-        <h1 className="Title">BlackCLoVer</h1>
+        <h1 className="Title"></h1>
       </Wrap>
       <Wrap>
-        <video muted controls autoPlay={true} loop ={true} playsInline={true}>
-          <source src="/videos/suzume-trailer-crop.mp4" type="video/mp4" />
+        <video  controls autoPlay={true}  playsInline={true}>
+          <source src="/videos/suzumetrailer.mp4" type="video/mp4" />
         </video>
         <h1 className="Anima"></h1>
       </Wrap>
@@ -19,7 +19,7 @@ const Viewers = (props) => {
         <video muted controls autoPlay={true} loop={true} playsInline={true}>
           <source src="/videos/bluelock-trailer-crop.mp4" type="video/mp4" />
         </video>
-        <h1>BlueLock</h1>
+        <h1></h1>
       </Wrap>
    
     </Container>
@@ -79,7 +79,7 @@ h1{
   padding : 1.5625rem;
   object-fit: cover;
   transition: opacity 500ms ease-in-out 0s;
-  font-size : 5.5rem;
+  font-size : 5.1rem;
   text-shadow: 1px 1px 2px black , 0 0 2em black, 0 0 0.2em black , 0 0 0.2em black , 0 0 0.2em black;
   opacity : 0;
   
@@ -128,7 +128,7 @@ h1.Title{
   
   padding : 0px 1.5625rem;
   transition: opacity 500ms ease-in-out 0s;
-  font-size : 4.0rem;
+  font-size : 3.5rem;
   text-shadow: 1px 1px 2px black , 0 0 2em black, 0 0 0.2em black , 0 0 0.2em black , 0 0 0.2em black;
   @media (max-width : 768px){
   font-size : 1px;
@@ -195,7 +195,7 @@ h1{
   padding : 1.5625rem;
   object-fit: cover;
   transition: opacity 500ms ease-in-out 0s;
-  font-size : 5.5rem;
+  font-size : 5.0rem;
   text-shadow: 1px 1px 2px black , 0 0 2em black, 0 0 0.2em black , 0 0 0.2em black , 0 0 0.2em black;
   @media (max-width : 768px){
   padding-left : 20px;
@@ -227,7 +227,7 @@ h1.Title{
   
   padding : 0px 1.5625rem;
   transition: opacity 500ms ease-in-out 0s;
-  font-size : 4.0rem;
+  font-size : 3.5rem;
   text-shadow: 1px 1px 2px black , 0 0 2em black, 0 0 0.2em black , 0 0 0.2em black , 0 0 0.2em black;
   @media (max-width : 768px){
   font-size : 20px;
